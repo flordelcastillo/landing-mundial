@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .section-title {
+    @apply text-3xl md:text-4xl font-extrabold tracking-tight uppercase;
+  }
+
+  .card {
+    @apply rounded-xl border bg-white dark:bg-[#111] border-[#e5e5e5] dark:border-[#222];
+  }
+}
