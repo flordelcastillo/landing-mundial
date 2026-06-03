@@ -14,17 +14,28 @@
   }
 
   body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
+    background-color: #FDFCF9;
+    color: #1C1916;
   }
 }
 
 @layer utilities {
   .section-title {
-    @apply text-3xl md:text-4xl font-extrabold tracking-tight uppercase;
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
   }
 
+  /* Double-bezel card — outer shell + warm shadow */
   .card {
-    @apply rounded-xl border bg-white dark:bg-[#111] border-[#e5e5e5] dark:border-[#222];
+    @apply rounded-2xl bg-white;
+    box-shadow:
+      0 0 0 1px rgba(28, 25, 22, 0.06),
+      0 1px 3px rgba(28, 25, 22, 0.04),
+      0 8px 28px rgba(28, 25, 22, 0.07);
+  }
+
+  .noise-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }

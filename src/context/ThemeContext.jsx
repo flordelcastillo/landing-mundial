@@ -1,21 +1,15 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 
-const ThemeContext = createContext()
+const ThemeContext = createContext({ dark: false, toggle: () => {} })
 
 export function ThemeProvider({ children }) {
-  const [dark, setDark] = useState(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved) return saved === 'dark'
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-  })
-
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark)
-    localStorage.setItem('theme', dark ? 'dark' : 'light')
-  }, [dark])
+    document.documentElement.classList.remove('dark')
+    localStorage.removeItem('theme')
+  }, [])
 
   return (
-    <ThemeContext.Provider value={{ dark, toggle: () => setDark(d => !d) }}>
+    <ThemeContext.Provider value={{ dark: false, toggle: () => {} }}>
       {children}
     </ThemeContext.Provider>
   )
